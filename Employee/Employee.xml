@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:Employee xmlns:tns="http://www.samsonmarikwa.com/Employee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.samsonmarikwa.com/Employee Employee.xsd ">
+  <tns:id>300</tns:id>
+  <tns:firstName>Samson</tns:firstName>
+  <tns:lastName>Mwamadi</tns:lastName>
+  <tns:gender>M</tns:gender>
+  <tns:maritalStatus>S</tns:maritalStatus>
+  <tns:dependant>
+    <tns:children>
+    	<tns:age>10</tns:age>
+    	<tns:firstName>Walter</tns:firstName>
+    	<tns:lastName>Marikwa</tns:lastName>
+    </tns:children>
+  </tns:dependant>
+</tns:Employee>
