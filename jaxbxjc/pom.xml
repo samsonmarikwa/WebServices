@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.6.7</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.samsonmarikwa.jaxb</groupId>
+	<artifactId>jaxbxjc</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>jaxbxjc</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+		<!-- Required for javax.xml.bind.annotation package in the generated classes from the xsd file -->
+		<dependency>
+	        <groupId>com.sun.xml.bind</groupId>
+	        <artifactId>jaxb-impl</artifactId>
+	        <version>3.0.2</version>
+	    </dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.jvnet.jaxb2.maven2</groupId>
+				<artifactId>maven-jaxb2-plugin</artifactId>
+				<version>0.14.0</version>
+				<!-- Required to address
+				     Execution default of goal org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.14.0:generate failed:
+				     Cannot invoke "java.lang.reflect.Method.invoke(Object, Object[])" because "com.sun.xml.bind.v2.runtime.reflect.opt.Injector.defineClass" is null
+				     (org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.14.0:generate:default:generate-sources)
+				-->
+				<dependencies>
+					<dependency>
+						<groupId>org.glassfish.jaxb</groupId>
+						<artifactId>jaxb-runtime</artifactId>
+						<version>2.3.5</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<configuration>
+					<schemaDirectory>${project.basedir}/src/main/xsd</schemaDirectory>
+					<schemaIncludes>
+						<include>Patient.xsd</include>
+					</schemaIncludes>
+					<bindingDirectory>${project.basedir}/src/main/xsd</bindingDirectory>
+					<bindingIncludes>
+						<include>global.xjb</include>
+					</bindingIncludes>
+					<generateDirectory>${project.basedir}/src/generated</generateDirectory>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
