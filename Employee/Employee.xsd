@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.samsonmarikwa.com/Employee"
+	xmlns:tns="http://www.samsonmarikwa.com/Employee" elementFormDefault="qualified">
+	<element name="Employee" type="tns:Employee"/>
+	<complexType name="Employee">
+		<sequence>
+			<element name="id" type="tns:ID"/>
+			<element name="firstName" type="tns:String15Characters"/>
+			<element name="lastName" type="tns:String15Characters"/>
+			<element name="gender" type="tns:Gender"/>
+			<element name="maritalStatus" type="tns:MaritalStatus"/>
+			<element name="dependant" type="tns:Dependant" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="Dependant">
+		<choice>
+			<element name="spouse" type="string" />
+			<element name="children" type="tns:Children" />
+		</choice>
+	</complexType>
+	
+	<complexType name="Children">
+		<all>
+			<element name="firstName" type="string" />
+			<element name="lastName" type="string" />
+			<element name="age" type="int" />
+		</all>
+	</complexType>
+	<simpleType name="ID">
+		<restriction base="long">
+			<pattern value="[0-9]*"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="String15Characters">
+		<restriction base="string">
+			<maxLength value="15"/>
+			<minLength value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="Gender">
+		<restriction base="string">
+			<enumeration value="M"/>
+			<enumeration value="F"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="MaritalStatus">
+		<restriction base="string">
+			<enumeration value="M"/>
+			<enumeration value="W"/>
+			<enumeration value="S"/>
+		</restriction>
+	</simpleType>
+</schema>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:patient
+	xmlns:tns="http://www.samsonmarikwa.com/Patient"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.samsonmarikwa.com/Patient Patient.xsd "
+	id="100">
+	<tns:name>Mary</tns:name>
+	<tns:dob>2001-01-01</tns:dob>
+	<tns:email>testemail@address.com</tns:email>
+	<tns:email>test2email@email.com</tns:email>
+	<tns:email>fake-mail@fakedomain.com</tns:email>
+	<tns:gender>M</tns:gender>
+	<tns:phone>345-987-6543</tns:phone>
+	<tns:payment>
+		<tns:cash>200</tns:cash>
+	</tns:payment>
+</tns:patient>

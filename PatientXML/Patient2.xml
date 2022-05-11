@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:patient
+	xmlns:tns="http://www.samsonmarikwa.com/Patient"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.samsonmarikwa.com/Patient Patient.xsd "
+	id="230">
+	<tns:name>Tadisa</tns:name>
+	<tns:dob>2001-01-28</tns:dob>
+	<tns:email>oneaddress@email.com</tns:email>
+	<tns:gender>M</tns:gender>
+	<tns:phone>789-098-1234</tns:phone>
+	<tns:payment>
+		<tns:insurance>
+			<tns:limit>230</tns:limit>
+			<tns:provider>Metlife</tns:provider>
+		</tns:insurance>
+	</tns:payment>
+</tns:patient>
