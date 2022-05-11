@@ -69,10 +69,12 @@
 				<configuration>
 					<schemaDirectory>${project.basedir}/src/main/xsd</schemaDirectory>
 					<schemaIncludes>
+						<!--  XML Schema Definition -->
 						<include>Patient.xsd</include>
 					</schemaIncludes>
 					<bindingDirectory>${project.basedir}/src/main/xsd</bindingDirectory>
 					<bindingIncludes>
+						<!-- XML to Java Binding -->
 						<include>global.xjb</include>
 					</bindingIncludes>
 					<generateDirectory>${project.basedir}/src/generated</generateDirectory>
