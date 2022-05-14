@@ -39,6 +39,9 @@ public class JaxbxjcApplication implements CommandLineRunner {
 		JAXBContext context = JAXBContext.newInstance(Patient.class);
 		Marshaller marshaller = context.createMarshaller();
 		
+		// By default, JAXB does not format the XML document. This saves space and prevents that any whitespace is accidentally interpreted as significant.
+		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		
 		Patient patient = new Patient();
 		patient.setId(100);
 		patient.setName("Lazaro");
@@ -67,15 +70,12 @@ public class JaxbxjcApplication implements CommandLineRunner {
 		StringWriter writer = new StringWriter();
 		marshaller.marshal(patient, writer);
 		
-		log.info("==============");
-		log.info("Marshalled: {}", writer.toString());
-		log.info("==============");
+		log.info("\n{}", writer.toString());
 		
 		Unmarshaller unMarshaller = context.createUnmarshaller();
 		Object unmarshal = unMarshaller.unmarshal(new StringReader(writer.toString()));
 		Patient patientUnmarsalled = (Patient) unmarshal;
-		log.info("Patient Name: {}", patientUnmarsalled.getName());
-		log.info("Patient Emails: {}", patientUnmarsalled.getEmails());
+		log.info("\nPatient Name: {}\nPatient Emails: {}", patientUnmarsalled.getName(), patientUnmarsalled.getEmails());
 		
 	}
 
