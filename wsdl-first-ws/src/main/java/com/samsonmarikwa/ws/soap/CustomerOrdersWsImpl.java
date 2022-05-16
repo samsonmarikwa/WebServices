@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.cxf.feature.Features;
+
 import com.samsonmarikwa.CreateOrdersRequest;
 import com.samsonmarikwa.CreateOrdersResponse;
 import com.samsonmarikwa.CustomerOrdersPortType;
@@ -14,6 +16,7 @@ import com.samsonmarikwa.GetOrdersResponse;
 import com.samsonmarikwa.Order;
 import com.samsonmarikwa.Product;
 
+@Features(features="org.apache.cxf.feature.LoggingFeature")
 public class CustomerOrdersWsImpl implements CustomerOrdersPortType {
 	
 	// Create in-memory database 
