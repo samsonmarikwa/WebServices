@@ -101,7 +101,7 @@
 		</wsdl:operation>
 	</wsdl:binding>
 	
-	<wsdl:service name="CustomerOrders">
+	<wsdl:service name="CustomerOrdersService">
 		<wsdl:port binding="tns:CustomerOrdersServiceSoapBinding" name="CustomerOrdersPortType">
 			<soap:address location="http://localhost:8080/wsdlfirstws/services/customerOrdersService" />
 		</wsdl:port>
