@@ -1,0 +1,13 @@
+com\samsonmarikwa\CreateOrdersResponse.class
+com\samsonmarikwa\ws\soap\CustomerOrdersWsImplService.class
+com\samsonmarikwa\ws\soap\JavasoapclientApplication.class
+com\samsonmarikwa\package-info.class
+com\samsonmarikwa\GetOrdersRequest.class
+com\samsonmarikwa\DeleteOrdersRequest.class
+com\samsonmarikwa\CreateOrdersRequest.class
+com\samsonmarikwa\CustomerOrdersPortType.class
+com\samsonmarikwa\Order.class
+com\samsonmarikwa\GetOrdersResponse.class
+com\samsonmarikwa\Product.class
+com\samsonmarikwa\DeleteOrdersResponse.class
+com\samsonmarikwa\ObjectFactory.class
