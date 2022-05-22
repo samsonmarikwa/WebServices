@@ -14,9 +14,12 @@ public class FileWsImpl implements FileWs {
 
 	@Override
 	public void upload(DataHandler attachment) {
+		InputStream inputStream = null;
+		OutputStream outputStream = null;
+		
 		try {
-			InputStream inputStream = attachment.getInputStream();
-			OutputStream outputStream = new FileOutputStream(new File("C:\\CognizantLive\\WebServicesFiles\\uploaded\\test.jpg"));
+			inputStream = attachment.getInputStream();
+			outputStream = new FileOutputStream(new File("C:\\CognizantLive\\WebServicesFiles\\uploaded\\test.jpg"));
 			byte[] b = new byte[100000];
 			int bytesRead = 0;
 			
@@ -25,6 +28,13 @@ public class FileWsImpl implements FileWs {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				inputStream.close();
+				outputStream.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
