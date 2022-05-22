@@ -53,6 +53,7 @@
 								<wsdlOption>
 									<!-- Either of the following can be used to locate the wsdl file -->
 									<wsdl>${basedir}/src/main/resources/wsdl/paymentProcessor.wsdl</wsdl>
+									<wsdlLocation>classpath:wsdl/paymentProcessor.wsdl</wsdlLocation>
 								</wsdlOption>
 							</wsdlOptions>
 						</configuration>
