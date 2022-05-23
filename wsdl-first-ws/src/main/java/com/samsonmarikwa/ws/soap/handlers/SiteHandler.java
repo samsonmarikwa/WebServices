@@ -17,6 +17,9 @@ public class SiteHandler implements SOAPHandler<SOAPMessageContext> {
 
 	@Override
 	public boolean handleMessage(SOAPMessageContext context) {
+		
+		System.out.println("handleMessage");
+		
 		Boolean isResponse = (Boolean) context.get(MessageContext.MESSAGE_OUTBOUND_PROPERTY); // if true, it is a response, if false it is a request
 		if(!isResponse) {
 			SOAPMessage soapMsg = context.getMessage();
@@ -24,31 +27,37 @@ public class SiteHandler implements SOAPHandler<SOAPMessageContext> {
 				SOAPEnvelope envelope = soapMsg.getSOAPPart().getEnvelope();
 				SOAPHeader header = envelope.getHeader();
 				Iterator<Node> childElements = header.getChildElements();
-				
+				while(childElements.hasNext()) {
+					Node node = childElements.next();
+					
+					String name = node.getLocalName();
+					if (name != null && name.equals("Sitename")) {
+						System.out.println("Site Name is =====> " + node.getValue());
+					}
+				}
 			} catch (SOAPException e) {
 				e.printStackTrace();
 			}
 		} else {
 			System.out.println("Response on the way");
 		}
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean handleFault(SOAPMessageContext context) {
-		// TODO Auto-generated method stub
+		System.out.println("handleFault");
 		return false;
 	}
 
 	@Override
 	public void close(MessageContext context) {
-		// TODO Auto-generated method stub
-		
+		System.out.println("close");
 	}
 
 	@Override
 	public Set<QName> getHeaders() {
-		// TODO Auto-generated method stub
+		System.out.println("getHeaders");
 		return null;
 	}
 
