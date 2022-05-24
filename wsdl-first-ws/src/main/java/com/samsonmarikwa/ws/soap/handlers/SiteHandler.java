@@ -31,7 +31,7 @@ public class SiteHandler implements SOAPHandler<SOAPMessageContext> {
 					Node node = childElements.next();
 					
 					String name = node.getLocalName();
-					if (name != null && name.equals("Sitename")) {
+					if (name != null && name.equals("SiteName")) {
 						System.out.println("Site Name is =====> " + node.getValue());
 					}
 				}
