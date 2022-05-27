@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
 
+import com.samsonmarikwa.restws.exception.PatientBusinessException;
 import com.samsonmarikwa.restws.model.Patient;
 
 @Service
@@ -66,7 +67,8 @@ public class PatientServiceImpl implements PatientService {
 			patients.put(patient.getId(), patient);
 			response = Response.ok().build();
 		} else {
-			response = Response.notModified().build();
+			//response = Response.notModified().build();
+			throw new PatientBusinessException();
 		}
 		return response;
 	}
