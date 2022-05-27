@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.ServiceUnavailableException;
+import javax.ws.rs.NotFoundException;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 
 import org.springframework.stereotype.Service;
@@ -37,7 +40,11 @@ public class PatientServiceImpl implements PatientService {
 	}
 
 	@Override
-	public Patient getPatient(Long id) {
+	public Patient getPatient(Long id) throws ServiceUnavailableException {
+		if(patients.get(id) == null) {
+			throw new WebApplicationException(Response.Status.NOT_FOUND);
+			//throw new ServiceUnavailableException();
+		}
 		return patients.get(id);
 	}
 
