@@ -2,6 +2,7 @@ package com.samsonmarikwa.restws.service;
 
 import java.util.List;
 
+import javax.naming.ServiceUnavailableException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -26,7 +27,7 @@ public interface PatientService {
 	
 	@Path("/patients/{id}")
 	@GET
-	Patient getPatient(@PathParam(value = "id") Long id);
+	Patient getPatient(@PathParam(value = "id") Long id) throws ServiceUnavailableException;
 	
 	@Path("/patients")
 	@POST
