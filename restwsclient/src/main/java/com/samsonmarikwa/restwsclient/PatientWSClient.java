@@ -37,6 +37,8 @@ public class PatientWSClient {
 		WebTarget putTarget = client.target(PATIENT_SERVICE_URL).path(PATIENTS);
 		Response updateResponse = putTarget.request().put(Entity.entity(patient, MediaType.APPLICATION_XML));
 		System.out.println(updateResponse.getStatus());
+		// Cleanup resources
+		updateResponse.close();
 		
 		// Create new patient
 		Patient newPatient = new Patient();
@@ -47,11 +49,22 @@ public class PatientWSClient {
 		System.out.println(createdPatient);
 		
 		// Get list of patients
-		target = client.target(PATIENT_SERVICE_URL).path(PATIENTS);
-		request = target.request();
-		List<Patient> patients = request.get(new GenericType<List<Patient>>() {});
+		WebTarget getTarget = client.target(PATIENT_SERVICE_URL).path(PATIENTS);
+		Builder getRequest = getTarget.request();
+		List<Patient> patients = getRequest.get(new GenericType<List<Patient>>() {});
 		System.out.println("===============");
 		System.out.println(patients);
+		
+		// Delete a patient
+		WebTarget deleteTarget = client.target(PATIENT_SERVICE_URL).path(PATIENTS).path("/{id}").resolveTemplate("id", 123);
+		Builder deleteRequest = deleteTarget.request();
+		Response deleteResponse = deleteRequest.delete();
+		System.out.println("===============");
+		System.out.println("Delete Status: " + deleteResponse.getStatus());
+		deleteResponse.close();		
+		
+		// Clean up resources	
+		client.close();
 	}
 
 }

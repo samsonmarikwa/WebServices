@@ -81,7 +81,7 @@ public class PatientServiceImpl implements PatientService {
 		Response response = null;
 		if (currentPatient != null) {
 			patients.remove(id);
-			response = Response.ok().build();
+			response = Response.status(204).build();
 		} else {
 			response = Response.notModified().build();
 		}
