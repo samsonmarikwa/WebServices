@@ -1,19 +1,29 @@
 package com.samsonmarikwa.restws.service;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
 
 import com.samsonmarikwa.restws.model.Passenger;
 
+@Service
 public class PassengerServiceImpl implements PassengerService {
+	
+	List<Passenger> passengers = new ArrayList<>();
+	int currentId = 123;
+	
 
 	@Override
 	public List<Passenger> getPassengers() {
-		return null;
+		return passengers;
 	}
 
 	@Override
-	public Passenger addPassenger() {
-		return null;
+	public Passenger addPassenger(Passenger passenger) {	
+		passenger.setId(currentId++);
+		passengers.add(passenger);
+		return passenger;
 	}
 
 }
