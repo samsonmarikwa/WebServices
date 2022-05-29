@@ -22,10 +22,9 @@ public class PassengerServiceImpl implements PassengerService {
 	}
 
 	@Override
-	public Passenger addPassenger(Passenger passenger) {	
-		passenger.setId(currentId++);
-		passengers.add(passenger);
-		return passenger;
+	public void addPassenger(String firstName, String lastName) {
+		System.out.println("firstName: " + firstName);
+		System.out.println("lastName: " + lastName);
 	}
 
 }
