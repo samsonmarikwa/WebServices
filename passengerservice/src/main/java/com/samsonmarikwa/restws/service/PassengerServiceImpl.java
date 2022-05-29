@@ -2,9 +2,11 @@ package com.samsonmarikwa.restws.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import javax.ws.rs.core.Cookie;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MultivaluedMap;
 
@@ -38,6 +40,13 @@ public class PassengerServiceImpl implements PassengerService {
 		for (String key : headerKeys) {
 			System.out.println(key + ", " + headers.getHeaderString(key));			
 		}
+		
+		// Read cookies
+		System.out.println("============================");
+		Map<String,Cookie> cookies = headers.getCookies();
+		Set<String> cookieKeys = cookies.keySet();
+		for (String cookieKey : cookieKeys) {
+			System.out.println(cookieKey + ", " + cookies.get(cookieKey).getValue());		
+		}
 	}
-
 }
