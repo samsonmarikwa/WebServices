@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -23,6 +24,7 @@ public interface PassengerService {
 	
 	@Path("/passengers")
 	@POST
-	void addPassenger(@FormParam("firstName") String firstName, @FormParam("lastName") String lastName);	// bind form values to java method params
+	void addPassenger(@FormParam("firstName") String firstName, @FormParam("lastName") String lastName,	// bind form values to java method params
+			@HeaderParam("agent") String agent);	// bind Header values to java method params
 
 }
