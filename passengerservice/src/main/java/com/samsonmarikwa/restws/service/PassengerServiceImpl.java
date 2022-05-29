@@ -15,7 +15,9 @@ public class PassengerServiceImpl implements PassengerService {
 	
 
 	@Override
-	public List<Passenger> getPassengers() {
+	public List<Passenger> getPassengers(int start, int size) {
+		System.out.println("start: " + start);
+		System.out.println("size: " + size);
 		return passengers;
 	}
 
