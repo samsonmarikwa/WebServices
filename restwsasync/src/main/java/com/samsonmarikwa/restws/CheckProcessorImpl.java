@@ -9,7 +9,12 @@ public class CheckProcessorImpl implements CheckProcessor {
 	@Override
 	public void processChecks(AsyncResponse response, ChecksList checksList) {
 		//logic
-		response.resume(true);
+		// typically Async methods implement multithreads, which allows the checks to be quickly proceesed in several threads.
+		new Thread() {
+			public void run() {
+				response.resume(true);		
+			}
+		}.start();
 	}
 
 }
