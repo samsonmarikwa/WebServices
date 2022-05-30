@@ -8,7 +8,7 @@ import javax.ws.rs.Path;
 
 import com.samsonmarikwa.restws.model.Product;
 
-@Path("/productsservice")
+@Path("/productservice")
 public interface ProductService {
 
 	@Path("/products")
