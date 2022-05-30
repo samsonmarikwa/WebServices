@@ -1,5 +1,6 @@
 package com.samsonmarikwa.restws;
 
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.container.AsyncResponse;
 
 import org.springframework.stereotype.Service;
@@ -15,6 +16,10 @@ public class CheckProcessorImpl implements CheckProcessor {
 		// typically Async methods implement multithreads, which allows the checks to be quickly proceesed in several threads.
 		new Thread() {
 			public void run() {
+				// throwing exceptions
+				if (checksList == null || checksList.getChecks() == null || checksList.getChecks().size() == 0) {
+					response.resume(new BadRequestException());	// throw exception asynchronously
+				}
 				response.resume(true);		
 			}
 		}.start();
