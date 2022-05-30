@@ -17,6 +17,6 @@ public interface ProductService {
 	
 	@Path("/products")
 	@POST
-	int addProduct(Product product);
+	long addProduct(Product product);
 	
 }
