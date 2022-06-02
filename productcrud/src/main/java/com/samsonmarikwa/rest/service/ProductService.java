@@ -22,7 +22,7 @@ public interface ProductService {
 	
 	@Path("/products")
 	@GET
-	List<Product> getProduct();
+	List<Product> getProducts();
 	
 	@Path("/products/{id}")
 	@GET
@@ -38,5 +38,5 @@ public interface ProductService {
 	
 	@Path("/products/{id}")
 	@DELETE
-	Status deleteProduct(@PathParam("id") int id);
+	void deleteProduct(@PathParam("id") int id);
 }

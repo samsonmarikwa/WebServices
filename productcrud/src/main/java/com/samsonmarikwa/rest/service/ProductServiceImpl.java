@@ -1,11 +1,13 @@
 package com.samsonmarikwa.rest.service;
 
 import java.util.List;
+import java.util.Optional;
 
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import com.samsonmarikwa.rest.entities.Product;
 import com.samsonmarikwa.rest.repos.ProductRepository;
 
@@ -15,13 +17,18 @@ public class ProductServiceImpl implements ProductService {
 	ProductRepository repository;
 
 	@Override
-	public List<Product> getProduct() {
+	public List<Product> getProducts() {
 		return repository.findAll();
 	}
 
 	@Override
 	public Product getProduct(int id) {
-		return repository.findById(id).get();
+		Optional<Product> optionalProduct = repository.findById(id);
+		if (optionalProduct.isPresent()) {
+			return optionalProduct.get();
+		} else {
+			throw new NotFoundException("Product Not Found!");
+		}
 	}
 
 	@Override
@@ -37,20 +44,13 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public Status deleteProduct(int id) {
-		Status status;
-		Product product = repository.findById(id).get();
-		if (product != null) {
-			repository.delete(product);
-		}
-		
-		if ((product != null) && (repository.findById(id).get() == null)) {
-			status = Response.Status.NO_CONTENT;
+	public void deleteProduct(int id) {
+		Optional<Product> optionalProduct = repository.findById(id);
+		if (optionalProduct.isPresent()) {
+			repository.deleteById(id);
 		} else {
-			status = Response.Status.NOT_FOUND;
-			
+			throw new NotFoundException("Product Not Found!");
 		}
-		return status;
 	}
 
 }
