@@ -3,12 +3,9 @@ package com.samsonmarikwa.rest.service;
 import java.util.List;
 
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-
 import com.samsonmarikwa.rest.entities.Product;
 import com.samsonmarikwa.rest.repos.ProductRepository;
 
