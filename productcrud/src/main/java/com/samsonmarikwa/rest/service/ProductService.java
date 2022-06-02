@@ -11,6 +11,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.samsonmarikwa.rest.entities.Product;
 
@@ -37,5 +38,5 @@ public interface ProductService {
 	
 	@Path("/products/{id}")
 	@DELETE
-	int deleteProduct(@PathParam("id") int id);
+	Status deleteProduct(@PathParam("id") int id);
 }
