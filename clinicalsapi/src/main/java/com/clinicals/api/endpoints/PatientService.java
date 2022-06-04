@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.apache.cxf.rs.security.cors.CrossOriginResourceSharing;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.clinicals.api.model.ClinicalData;
@@ -22,6 +23,7 @@ import com.clinicals.api.repos.PatientRepo;
 @Consumes("application/json")
 @Produces("application/json")
 @Path("/api")
+@CrossOriginResourceSharing(allowAllOrigins=true)	// in Production, this should be restricted. Use allowOrigins parameter
 public class PatientService {
 	
 	@Autowired
