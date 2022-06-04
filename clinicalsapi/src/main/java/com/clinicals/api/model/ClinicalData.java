@@ -4,14 +4,22 @@ import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
+@Table(name="clinicaldata")
+@JsonIgnoreProperties({"patient"})	// tells jackson to ignore the pulling of patient data which if pulled would again pull ClinicalData causing a continuous loop 
 public class ClinicalData {
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private int patientId;
 	private String componentName;
