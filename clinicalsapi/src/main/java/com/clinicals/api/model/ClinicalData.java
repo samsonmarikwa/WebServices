@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -22,9 +24,11 @@ public class ClinicalData {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-//	private int patientId;
 	private String componentName;
 	private String componentValue;
+	
+	@CreationTimestamp
+	@Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false, updatable = false)
 	private Timestamp measuredDateTime;
 	
 	@ManyToOne(fetch=FetchType.LAZY)	// many clinical data to one patient
@@ -37,12 +41,6 @@ public class ClinicalData {
 	public void setId(int id) {
 		this.id = id;
 	}
-//	public int getPatientId() {
-//		return patientId;
-//	}
-//	public void setPatientId(int patientId) {
-//		this.patientId = patientId;
-//	}
 	public String getComponentName() {
 		return componentName;
 	}
@@ -60,6 +58,12 @@ public class ClinicalData {
 	}
 	public void setMeasuredDateTime(Timestamp measuredDateTime) {
 		this.measuredDateTime = measuredDateTime;
+	}
+	public Patient getPatient() {
+		return patient;
+	}
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 	
 }
