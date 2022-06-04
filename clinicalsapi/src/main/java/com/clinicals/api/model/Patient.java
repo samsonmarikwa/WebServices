@@ -1,7 +1,12 @@
 package com.clinicals.api.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Patient {
@@ -11,6 +16,9 @@ public class Patient {
 	private String lastName;
 	private String firstName;
 	private int age;
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="patient") // one patient to many clinical data (List), mapped by patient - a property in the ClinicalData entity
+	private List<ClinicalData> clinicalData;
 	
 	public int getId() {
 		return id;
