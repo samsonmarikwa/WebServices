@@ -28,7 +28,7 @@ public class PatientService {
 		return repo.save(patient);
 	}
 	
-	@Path("/patient/{id}")
+	@Path("/patients/{id}")
 	@GET
 	public Patient getPatient(@PathParam("id") int id) {
 		return repo.findById(id).get();

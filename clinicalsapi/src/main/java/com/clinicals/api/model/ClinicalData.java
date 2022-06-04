@@ -2,6 +2,7 @@ package com.clinicals.api.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class ClinicalData {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private int patientId;
+//	private int patientId;
 	private String componentName;
 	private String componentValue;
 	private Timestamp measuredDateTime;
@@ -36,12 +37,12 @@ public class ClinicalData {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getPatientId() {
-		return patientId;
-	}
-	public void setPatientId(int patientId) {
-		this.patientId = patientId;
-	}
+//	public int getPatientId() {
+//		return patientId;
+//	}
+//	public void setPatientId(int patientId) {
+//		this.patientId = patientId;
+//	}
 	public String getComponentName() {
 		return componentName;
 	}

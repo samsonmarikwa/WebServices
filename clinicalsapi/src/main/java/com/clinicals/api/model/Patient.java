@@ -20,7 +20,7 @@ public class Patient {
 	private String firstName;
 	private int age;
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="patient") // one patient to many clinical data (List), mapped by patient - a property in the ClinicalData entity
+	@OneToMany(mappedBy="patient", cascade=CascadeType.ALL, fetch=FetchType.EAGER) // one patient to many clinical data (List), mapped by patient - a property in the ClinicalData entity
 	private List<ClinicalData> clinicalData;
 	
 	public int getId() {
